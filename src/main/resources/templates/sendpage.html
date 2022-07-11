@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{/styles/sendpage.css}" type="text/css" />
+    <title>Регистрация</title>
+</head>
+
+<body>
+
+<section class="hhhh">
+
+
+    <div class="buttonprofile">
+
+        <h1 class="yagodka">YAGONDA.COM</h1>
+
+        <ul class="ulnavmain">
+            <li><a  th:href="@{/logout}">Выйти</a></li>
+            <li><a th:href="@{/chats}">Сообщения</a></li>
+            <li><a th:href="@{/myprofile}">Мой профиль</a></li>
+
+        </ul>
+
+    </div>
+
+
+</section>
+
+<div class="ulnav">
+    <ul class="ulnav">
+
+        <li><a th:href="@{/}">Все анкеты</a></li>
+        <li><a th:href="@{/liked}">Понравившиеся</a></li>
+        <li><a th:href="@{/main/mans}">Анкеты: мужчины</a></li>
+        <li><a th:href="@{/main/womans}">Анкеты: женщины</a></li>
+        <li><a href="/">Анкеты: другое</a></li>
+        <li><a href="/">О сайте</a></li>
+
+    </ul>
+</div>
+
+
+
+<h1 class="h1newmessage">Создание нового чата</h1>
+
+<section class="newchat">
+
+<form method="post" th:action="@{/sendtoid{id}(id = ${superid})}" class="forminput1" th:object="${currentmessage}">
+    <div>
+        <input type="hidden" th:field="*{id}" />
+    </div>
+    <div>
+                <textarea cols="65" rows="3" th:field="*{messagetext}" class="textarea1" name="messagetext" placeholder="Новое сообщение" id="messagetext">
+
+            </textarea>
+    </div>
+    <div>
+        <input type="hidden" th:field="*{who}"/>
+    </div>
+
+    <div>
+        <input type="submit" value="Отправить сообщение" />
+    </div>
+</form>
+
+</section>
+
+
+</body>
+
+</html>

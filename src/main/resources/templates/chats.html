@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{/styles/chats.css}" type="text/css" />
+    <title>Главная страница</title>
+</head>
+
+<body>
+
+
+<section class="hhhh">
+
+    <div class="buttonprofile">
+
+        <h1 class="yagodka">YAGONDA.COM</h1>
+
+        <ul class="ulnavmain">
+            <li><a  th:href="@{/logout}">Выйти</a></li>
+            <li><a th:href="@{/chats}">Сообщения</a></li>
+            <li><a th:href="@{/myprofile}">Мой профиль</a></li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+
+<ul class="ulnav">
+    <li><a th:href="@{/}">Все анкеты</a></li>
+    <li><a th:href="@{/liked}">Понравившиеся</a></li>
+    <li><a th:href="@{/main/mans}">Анкеты: мужчины</a></li>
+    <li><a th:href="@{/main/womans}">Анкеты: женщины</a></li>
+    <li><a href="/">Анкеты: другое</a></li>
+    <li><a href="/">О сайте</a></li>
+
+</ul>
+<section class="chats">
+
+    <div class="allchat" th:each="element : ${userchats}">
+
+    <a  th:href="@{/chatnumber{id}(id = ${element.id})}" class="eachchat">
+
+        <div class="chats">
+        <label for="${element.id}">Номер чата</label>
+        <p th:text="${element.id}" id="${element.id}">Nickname</p>
+        <label for="${element.who}">Ваш собеседник</label>
+        <p  th:text="${element.who}" id="${element.who}">Nickname</p>
+        </div>
+
+    </a>
+
+
+
+        <div class="delchat">
+        <form th:action="@{/chatnumber{id}(id = ${element.id})}" th:method="delete">
+            <button type="submit" class="anger">Удалить чат</button>
+        </form>
+        </div>
+
+    </div>
+
+
+</section>
+
+</body>
+
+</html>
